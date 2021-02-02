@@ -1,1 +1,1 @@
-Just a very simple vue/w3css TODO-List (first time used vue.js - Normally Angular / SAPUI5)
+Just a very simple vue/w3css TODO-List (first time used vue.js - Normally Angular / SAPUI5 for frontend)
