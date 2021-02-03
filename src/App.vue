@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import StartView from './components/StartView.vue'
-import Header from './components/Header.vue'
+import StartView from './components/start/StartView.vue'
+import Header from './components/shared/Header.vue'
 
 export default {
   name: 'App',
