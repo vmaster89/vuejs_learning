@@ -1,27 +1,36 @@
 import StartModel from './StartModel.js';
 
-const todo = [];
-
 const onClick = function () {
     if ( this.seen ) { 
         this.seen = false;
-        this.buttonText = 'show';
+        this.hideShowButtonText = 'show';
     } else {
         this.seen = true;
-        this.buttonText = 'hide';
+        this.hideShowButtonText = 'hide';
     }
 }
 
+function* identity() {
+	let i = 0;
+	while (true) {
+		i++;
+		yield i;
+	}
+}
+const id = identity();
 const onEnter = function () {
     if (!this.message) return false;
-    let idList = Object.keys(todo);
-    let max = Math.max(...idList);
-    max++;
-    todo.push({
-        id: max, 
+    StartModel.entryList.push({
+        id: id.next().value, 
         text: this.message,
     });
     this.message = '';
+}
+
+const onDelete = (item) => {
+  StartModel.entryList = StartModel.entryList.filter((element) => { 
+    return element.id !== item.id;
+  });
 }
 
 export default {
@@ -34,6 +43,7 @@ export default {
   },
   methods: { 
     onClick: onClick,
-    onEnter: onEnter
+    onEnter: onEnter,
+    onDelete: onDelete,
   }
 }
