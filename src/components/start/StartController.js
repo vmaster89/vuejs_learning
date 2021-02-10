@@ -17,7 +17,9 @@ function* identity() {
 		yield i;
 	}
 }
+
 const id = identity();
+
 const onEnter = function () {
     if (!this.message) return false;
     StartModel.entryList.push({
@@ -28,6 +30,7 @@ const onEnter = function () {
 }
 
 const onDelete = (item) => {
+  if (!item) return;
   StartModel.entryList = StartModel.entryList.filter((element) => { 
     return element.id !== item.id;
   });
